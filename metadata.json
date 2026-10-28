@@ -1,0 +1,6 @@
+{
+  "name": "Ekam — Unified Multi-Service Marketplace for India",
+  "description": "One connected digital platform with six services: Ekam Weddings, Ekam Deals, Ekam Carry, Ekam Books, Ekam Charge, and Ekam Build.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

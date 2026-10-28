@@ -1,0 +1,1761 @@
+# EKAM — COMPLETE MASTER PROMPT FOR GOOGLE AI STUDIO
+## Unified Multi-Service Marketplace for India
+
+### 1. ROLE AND RESPONSIBILITY
+
+Act as a senior product architect, Android engineer, full-stack developer, backend engineer, database architect, UI/UX designer, cybersecurity engineer, QA engineer, and technical product strategist.
+
+Your assignment is to design and implement **Ekam**, a unified multi-service commerce platform for the Indian market.
+
+Think like an experienced engineering team building a real product that must be maintainable, secure, scalable, commercially viable, and usable by ordinary people.
+
+Do not produce a superficial landing page or a collection of disconnected UI mockups. Design a coherent product with clearly defined workflows, persistent data, validated business rules, reliable transaction states, and a realistic path to production.
+
+Start with architectural planning, then implement incrementally.
+
+Do not claim that a feature is production-ready if it relies on mock data, unconfigured external services, simulated payments, or untested integrations.
+
+---
+
+# 2. OFFICIAL PROJECT IDENTITY
+
+## Parent brand
+
+**EKAM**
+
+## Brand positioning
+
+Ekam is one connected digital platform that makes everyday transactions, resource sharing, collective purchasing, and event coordination simpler and more efficient.
+
+## Brand promise
+
+One platform. Six services. One connected ecosystem.
+
+## Official business modules
+
+1. **Ekam Weddings** — Digital wedding guest management and attendance planning.
+2. **Ekam Deals** — Collective purchasing and group-buying marketplace.
+3. **Ekam Carry** — Eligible traveller-assisted product delivery marketplace.
+4. **Ekam Books** — Second-hand book exchange marketplace.
+5. **Ekam Charge** — Peer-to-peer EV charger-sharing marketplace.
+6. **Ekam Build** — Reusable surplus construction and renovation materials marketplace.
+
+Use these exact names consistently throughout the application, design system, product documentation, navigation, API documentation, administrative interface, and analytics.
+
+Ekam is the parent platform. The six services are independent business domains within one application.
+
+Do not create six separate Android applications.
+
+Do not rename, merge, or omit any of the six services.
+
+Design the platform so additional Ekam services can be introduced in the future without redesigning the entire architecture.
+
+---
+
+# 3. PRODUCT VISION
+
+Build one unified Android application that helps users discover and use six practical services through a common account, consistent interface, shared infrastructure, and reliable transaction experience.
+
+The application should help users:
+
+- Reduce avoidable expenditure and uncertainty when organising weddings.
+- Obtain competitive quotations through collective buying.
+- Access eligible products through trusted delivery arrangements.
+- Exchange and reuse second-hand books.
+- Discover and reserve compatible EV charging facilities.
+- Buy and sell reusable surplus construction materials.
+
+Although all six services belong to one ecosystem, each must retain its own business logic, domain-specific data, permissions, workflows, and transaction lifecycle.
+
+The platform must support incremental development and commercial validation.
+
+**Primary objective:** Establish a reliable foundation and launch one complete business workflow before activating the remaining services.
+
+**Secondary objective:** Reuse proven platform capabilities so that subsequent services require less duplicated engineering.
+
+---
+
+# 4. PROJECT OBJECTIVES
+
+The application must:
+
+1. Provide a consistent, high-quality Android experience.
+2. Present all six Ekam services through a unified home screen.
+3. Use shared authentication, profiles, notifications, support, and administration where appropriate.
+4. Maintain independent business rules for every service.
+5. Enforce permissions and transaction integrity on the backend.
+6. Support Indian users, currencies, locations, mobile networks, and languages.
+7. Minimise unnecessary infrastructure and third-party expenditure.
+8. Provide secure and transparent payment and refund workflows where payments are enabled.
+9. Include proper validation, loading, empty, success, error, and offline states.
+10. Support automated testing, monitoring, backups, and controlled releases.
+11. Allow new services to be added without tightly coupling existing services.
+12. Establish measurable criteria for deciding when each service is ready for launch.
+
+---
+
+# 5. REQUIRED WORKING METHOD
+
+Follow this development sequence.
+
+## Phase 1: Analyse and plan
+
+Before generating the full implementation:
+
+- Analyse all six business models.
+- Identify assumptions and unanswered questions.
+- Assess technical feasibility.
+- Identify operational, financial, and regulatory risks.
+- Compare the modules using transparent criteria.
+- Recommend one initial MVP.
+- Define the initial user journeys.
+- Propose the system architecture.
+- Define the database model and API boundaries.
+- Identify external dependencies.
+- Estimate development and operating costs.
+
+Do not begin by generating thousands of lines of application code.
+
+## Phase 2: Design
+
+Produce:
+
+- Product information architecture.
+- Navigation structure.
+- Design tokens.
+- Reusable UI components.
+- Screen inventory.
+- Screen flows.
+- Wireframes or functional UI prototypes.
+- Data models.
+- API contracts.
+- Domain state machines.
+- Error and offline behaviour.
+
+## Phase 3: Build the shared foundation
+
+Implement the minimum shared capabilities required by the chosen MVP.
+
+Examples include:
+
+- Authentication.
+- User profiles.
+- Role-based permissions.
+- Database connectivity.
+- API client.
+- Logging.
+- Basic notification support.
+- Administration tools.
+- Automated testing.
+- Deployment configuration.
+
+Avoid building sophisticated shared services before there is a clear requirement.
+
+## Phase 4: Build one complete service
+
+Implement one selected module from end to end, including:
+
+- User interface.
+- Backend logic.
+- Database persistence.
+- Validation.
+- Security.
+- Administrative workflows.
+- Testing.
+- Error handling.
+- Deployment documentation.
+
+## Phase 5: Validate
+
+Test the implementation with real users and measure:
+
+- Activation.
+- Workflow completion.
+- Transaction success.
+- Reliability.
+- Support workload.
+- User feedback.
+- Operating cost.
+- Revenue potential where applicable.
+
+## Phase 6: Expand
+
+Activate additional Ekam services individually after the shared foundation and first workflow have been validated.
+
+Each additional module must pass its own readiness review.
+
+---
+
+# 6. TECHNOLOGY STRATEGY
+
+Use an architecture appropriate for a maintainable, Android-first product.
+
+## Android application
+
+Preferred technology:
+
+- Kotlin.
+- Jetpack Compose.
+- Material 3.
+- Android Architecture Components.
+- ViewModel.
+- Kotlin Coroutines and Flow.
+- Navigation Compose.
+- Retrofit or an equivalent typed networking client.
+- Kotlin Serialization or an equivalent serialization library.
+- Room for appropriate local persistence.
+- DataStore for local preferences.
+- WorkManager for suitable background tasks.
+- Hilt or another justified dependency-injection framework.
+
+The preferred Android stack is Kotlin and Jetpack Compose because the primary deliverable is a native Android application.
+
+If the available Google AI Studio environment cannot compile, execute, or package a native Android application directly, do not pretend that a generated web application is an installable Android APK.
+
+In that case:
+
+1. Generate a functional web prototype for design and workflow validation if appropriate.
+2. Keep the architecture and product requirements compatible with a native Kotlin Android client.
+3. Provide the complete proposed Android project structure and implementation plan.
+4. Clearly distinguish the prototype from the production Android application.
+5. Do not describe a website or PWA as a native Android application.
+
+## Backend
+
+Evaluate a maintainable backend using a suitable framework, such as:
+
+- Kotlin with Spring Boot.
+- Java with Spring Boot.
+- TypeScript with NestJS.
+- Another well-supported framework justified by team skills and operational needs.
+
+Use one backend framework initially unless there is a compelling reason to introduce more.
+
+## Database
+
+Use PostgreSQL as the primary transactional database unless an architecture review identifies a specific reason to choose an alternative.
+
+Evaluate PostGIS for location-based discovery.
+
+Use database constraints and transactions for important business invariants.
+
+## Storage
+
+Use suitable object storage for:
+
+- Listing photographs.
+- Wedding-related media where necessary.
+- Book photographs.
+- Material photographs.
+- Verification documents where justified.
+- Transaction evidence.
+
+Do not store large image or document binaries directly in ordinary relational database records.
+
+## Additional infrastructure
+
+Evaluate the need for:
+
+- Redis.
+- Background job processing.
+- Firebase Cloud Messaging.
+- Centralised logs.
+- Error reporting.
+- Monitoring.
+- Analytics.
+- Payment provider integration.
+- Maps and geocoding.
+- Identity verification.
+
+Do not add every service automatically. Justify each dependency based on the MVP and expected workload.
+
+## Architectural principle
+
+Start with a **modular monolith** for the backend, with clearly defined domain boundaries.
+
+Do not default to microservices, Kubernetes, or complex distributed infrastructure for an early-stage product.
+
+---
+
+# 7. BRAND AND DESIGN SYSTEM
+
+Create a distinctive, premium, modern, trustworthy brand identity for Ekam.
+
+## Visual direction
+
+Use a clean, contemporary Indian-marketplace aesthetic with:
+
+- Strong visual hierarchy.
+- Generous but efficient spacing.
+- Modern typography.
+- Consistent iconography.
+- Clear price and status indicators.
+- Readable cards and forms.
+- Subtle, purposeful animations.
+- Excellent contrast.
+- Well-designed empty states.
+- Accessible touch targets.
+
+The product must feel like a serious technology platform rather than a collection of unrelated mini-apps.
+
+## Brand architecture
+
+The Ekam parent brand should remain recognisable throughout the experience.
+
+Each service may have its own icon and subtle visual accent, but all services must use the same underlying design system.
+
+Use these service labels:
+
+- Ekam Weddings.
+- Ekam Deals.
+- Ekam Carry.
+- Ekam Books.
+- Ekam Charge.
+- Ekam Build.
+
+Do not assign unrelated visual identities to the six services.
+
+## Colour system
+
+Create semantic design tokens for:
+
+- Primary brand colour.
+- Secondary colour.
+- Accent colour.
+- Background.
+- Surface.
+- Elevated surface.
+- Primary text.
+- Secondary text.
+- Border.
+- Success.
+- Warning.
+- Error.
+- Informational status.
+
+Choose a restrained palette suitable for a modern Indian technology brand.
+
+Verify text contrast and accessibility.
+
+Support light and dark themes where practical.
+
+Do not use colour alone to communicate critical status.
+
+## Typography
+
+Use a legible typography system with clear distinctions between:
+
+- Display text.
+- Screen titles.
+- Section headings.
+- Body text.
+- Supporting text.
+- Form labels.
+- Prices.
+- Status labels.
+- Buttons.
+
+Select fonts that support Latin, Devanagari, Hindi, and Marathi text.
+
+## Reusable components
+
+Build reusable components for:
+
+- App bars.
+- Bottom navigation.
+- Service cards.
+- Buttons.
+- Text fields.
+- Search bars.
+- Filter chips.
+- Product cards.
+- Listing cards.
+- Price breakdowns.
+- Status indicators.
+- Confirmation dialogs.
+- Bottom sheets.
+- Date and time selectors.
+- Image upload.
+- Empty states.
+- Error states.
+- Loading placeholders.
+- Pagination or incremental loading.
+- Reviews.
+- Notification items.
+- Transaction summaries.
+
+Use consistent component APIs and spacing tokens.
+
+Avoid duplicating the same component implementation across multiple services.
+
+---
+
+# 8. APPLICATION INFORMATION ARCHITECTURE
+
+Design the application around a common shell.
+
+## Recommended primary navigation
+
+1. Home.
+2. Explore.
+3. My Activity.
+4. Notifications.
+5. Profile.
+
+Adapt the final navigation if usability testing indicates a better solution, but preserve the principle of one coherent application.
+
+## Home screen
+
+The home screen should contain:
+
+- Ekam branding.
+- Greeting or welcome area.
+- Search entry point.
+- Location selector where relevant.
+- Six service cards.
+- Relevant active transactions.
+- Useful recommendations where sufficient data exists.
+- Recent activity.
+- Support access.
+- Contextual onboarding for new users.
+
+Do not fill the home screen with fake activity, fabricated reviews, invented user counts, or unverified savings claims.
+
+If the backend is empty, show useful empty states and onboarding guidance.
+
+## Explore screen
+
+Provide a unified discovery entry point while allowing users to switch to service-specific search and filters.
+
+Examples:
+
+- Books near a selected location.
+- Compatible EV charging facilities.
+- Eligible construction materials.
+- Open purchase requests.
+- Wedding planning tools.
+- Eligible traveller-delivery requests.
+
+Do not combine unrelated records into misleading search results.
+
+## My Activity
+
+Show the current user's relevant activities across Ekam:
+
+- Wedding events and invitations.
+- Group-buy requests and quotations.
+- TravelCarry requests and deliveries.
+- Book listings and exchanges.
+- ChargeShare bookings.
+- ReBuild listings and reservations.
+
+Group activities by service and state.
+
+Provide clear links into each module's transaction details.
+
+## Notifications
+
+Display:
+
+- Important transaction updates.
+- Booking confirmations.
+- RSVP updates.
+- Quotation availability.
+- Delivery milestones.
+- Exchange updates.
+- Payment results where enabled.
+- Support and dispute updates.
+
+Respect notification preferences.
+
+## Profile
+
+Include:
+
+- Personal details.
+- Language preference.
+- Location preferences.
+- Account security.
+- Verification status.
+- Notification settings.
+- Privacy settings.
+- Terms and privacy policy.
+- Help and support.
+- Account deletion request.
+
+Ask for permissions only when required by a particular feature.
+
+---
+
+# 9. SHARED PLATFORM SERVICES
+
+Build reusable platform capabilities for:
+
+## Authentication
+
+- Registration.
+- Login.
+- Logout.
+- Session expiry.
+- Account recovery.
+- Token refresh where applicable.
+- Account deletion request.
+- Secure authentication state.
+- Optional phone verification.
+
+Select authentication methods based on actual user needs and provider support.
+
+Do not require OTP for every application action.
+
+## User profiles
+
+Support common profile information and service-specific roles.
+
+Avoid collecting unnecessary personal information.
+
+## Roles and permissions
+
+Potential roles include:
+
+- Customer.
+- Seller.
+- Buyer.
+- Wedding organiser.
+- Wedding planner.
+- Dealer representative.
+- Traveller.
+- Delivery partner.
+- Book owner.
+- Charger owner.
+- Material seller.
+- Support agent.
+- Moderator.
+- Finance operator.
+- Administrator.
+
+Users may have multiple roles.
+
+Use resource-level permissions on the backend. A user's role must not automatically grant access to every record within a service.
+
+## Notifications
+
+Implement a shared notification framework with module-specific event types.
+
+Support in-app and push notifications initially where appropriate.
+
+SMS, email, and WhatsApp Business messaging must use appropriate external providers and comply with consent and messaging requirements.
+
+## Media
+
+Implement secure image upload, validation, storage, and retrieval.
+
+Use file-size limits, content-type checks, image optimisation, and access controls.
+
+## Support
+
+Create a shared support framework for:
+
+- User complaints.
+- Transaction issues.
+- Refund requests.
+- Fraud reports.
+- Safety reports.
+- Account problems.
+- Service-specific disputes.
+
+## Reviews
+
+Allow reviews only for eligible interactions.
+
+Prevent duplicate reviews and abusive review manipulation.
+
+Provide a reporting and moderation process.
+
+## Feature flags
+
+Enable or disable individual services through controlled configuration.
+
+A module that has not passed its launch-readiness review must be visibly marked as coming soon or omitted from active discovery.
+
+Never expose unfinished transactional flows as if they were live.
+
+---
+
+# 10. MODULE SPECIFICATION: EKAM WEDDINGS
+
+## Purpose
+
+Help Indian families and wedding organisers manage invitations, attendance confirmations, guest groups, wedding functions, and catering estimates.
+
+## Target users
+
+- Couples and families.
+- Wedding planners.
+- Event organisers.
+- Authorised caterers.
+
+## Main workflow
+
+1. Create a wedding.
+2. Add wedding functions.
+3. Build or import a guest list.
+4. Group guests into households.
+5. Create function-specific invitations.
+6. Share invitation links.
+7. Collect RSVPs.
+8. Update expected attendee counts.
+9. Send reminders.
+10. Review attendance estimates.
+11. Export operational reports.
+
+## Essential MVP screens
+
+- Weddings dashboard.
+- Create wedding.
+- Wedding details.
+- Functions management.
+- Guest list.
+- Add or edit guest.
+- Household management.
+- Invitation preview.
+- RSVP form.
+- Attendance dashboard.
+- Reminder management.
+- Export screen.
+
+## Required data
+
+- Wedding.
+- Wedding function.
+- Household.
+- Guest.
+- Invitation.
+- RSVP response.
+- Attendee count.
+- Meal preference where relevant.
+- Reminder record.
+- Organiser assignment.
+
+## Business rules
+
+- Each function must have its own invitation eligibility.
+- Each guest group must have a clear expected attendee count.
+- RSVP changes must be reflected in the attendance summary.
+- Guest lists must remain private.
+- A public invitation link must not expose the full guest list.
+- Catering estimates must distinguish confirmed attendance from forecast values.
+- The system must show when data was last updated.
+- Organisers must be able to correct mistakes.
+- Planner and caterer permissions must be limited to authorised information.
+
+## Essential features
+
+- Wedding creation.
+- Multiple functions.
+- Guest management.
+- RSVP collection.
+- Shareable invitation links.
+- Attendance summaries.
+- Basic reminders.
+- CSV export if needed for the pilot.
+- Role-based access.
+
+## Later enhancements
+
+- CSV import.
+- Automated WhatsApp Business messaging.
+- QR check-in.
+- Seating assignments.
+- Budget tracking.
+- Advanced attendance forecasting.
+- Planner subscription plans.
+- Caterer integrations.
+
+Do not promise that RSVPs eliminate no-shows. Provide useful estimates with clear uncertainty.
+
+---
+
+# 11. MODULE SPECIFICATION: EKAM DEALS
+
+## Purpose
+
+Connect qualified buyers with verified suppliers who can provide competitive, transparent quotations.
+
+## Initial scope
+
+Choose one initial category after feasibility validation. Passenger vehicles may be evaluated as a candidate category.
+
+Do not build a universal product catalogue before validating the first category.
+
+## Main workflow
+
+1. Buyer registers.
+2. Buyer creates a purchase request.
+3. Buyer specifies category, model, variant, budget, location, and purchase timeline.
+4. Backend validates the request.
+5. Compatible requests may be grouped into a demand cohort.
+6. Verified suppliers receive eligible requests or aggregated demand information.
+7. Suppliers submit itemised quotations.
+8. Buyers compare quotes.
+9. Buyers ask questions or contact suppliers.
+10. Buyers independently decide whether to proceed.
+11. Outcomes are recorded where appropriate.
+
+## Essential MVP screens
+
+- Deals home.
+- Create purchase request.
+- Product and variant selection.
+- Budget and location selection.
+- Request status.
+- Demand cohort status.
+- Quotation list.
+- Quotation details.
+- Quote comparison.
+- Supplier details.
+- Contact or enquiry.
+- Request history.
+
+## Vehicle quote structure
+
+Where the pilot category is vehicles, support:
+
+- Manufacturer.
+- Model.
+- Variant.
+- Fuel or powertrain.
+- Ex-showroom price.
+- Applicable registration and tax charges.
+- Insurance.
+- Accessories.
+- Discounts.
+- Optional add-ons.
+- On-road total.
+- Delivery estimate.
+- Quote expiry.
+- Supplier identity.
+- Terms and exclusions.
+
+Calculate comparable totals on the backend.
+
+## Business rules
+
+- Quotes must have explicit validity dates.
+- Supplier identities must be verified to the required level.
+- Buyers must be able to reject all quotations.
+- Joining a cohort must not create a purchase obligation.
+- Do not invent or exaggerate savings.
+- Do not represent optional add-ons as mandatory charges.
+- Do not expose buyers' personal details to unrelated suppliers.
+- Demand cohort size must be accurate.
+- Buyers must be able to cancel a request under the documented policy.
+
+## Monetisation
+
+Evaluate supplier subscriptions, qualified-lead fees, and clearly labelled sponsored placements.
+
+Do not introduce complex transaction settlement until the business model requires it.
+
+---
+
+# 12. MODULE SPECIFICATION: EKAM CARRY
+
+## Purpose
+
+Connect eligible product requests with verified travellers or authorised delivery partners.
+
+## Initial scope
+
+Start with domestic routes and approved product categories.
+
+International operations must remain disabled until applicable customs, import, tax, product, payment, insurance, and liability questions have been reviewed.
+
+## Main workflow
+
+1. Requester submits a product request.
+2. Backend checks category and route eligibility.
+3. Verified traveller or delivery partner offers an eligible fulfilment arrangement.
+4. Requester reviews the proposed arrangement.
+5. Both parties agree on price, terms, and delivery expectations.
+6. Payment is processed through an approved workflow if enabled.
+7. Purchase evidence is uploaded where required.
+8. Fulfilment milestones are recorded.
+9. Recipient confirms delivery.
+10. Disputes and refunds are handled through documented policies.
+
+## Essential MVP screens
+
+- Carry home.
+- Create request.
+- Eligible category selection.
+- Route selection.
+- Matching results.
+- Traveller or delivery-partner profile.
+- Offer details.
+- Order confirmation.
+- Fulfilment tracking.
+- Evidence upload.
+- Delivery confirmation.
+- Cancellation.
+- Dispute reporting.
+
+## Business rules
+
+- Prohibit illegal, restricted, counterfeit, or dangerous products.
+- Verify participant identity proportionately.
+- Protect identity documents.
+- Record fulfilment terms.
+- Provide transparent charges.
+- Define loss, damage, cancellation, and non-delivery procedures.
+- Do not claim delivery insurance without verified coverage.
+- Provide reporting and suspension mechanisms.
+- Do not activate unsupported international workflows.
+
+---
+
+# 13. MODULE SPECIFICATION: EKAM BOOKS
+
+## Purpose
+
+Create an affordable, trustworthy second-hand book exchange marketplace.
+
+## Main workflow
+
+1. User creates a book listing.
+2. User adds title, author, ISBN, edition, condition, photographs, and location.
+3. Backend validates listing data.
+4. Other users search for books.
+5. Interested user requests a book.
+6. Owner accepts or rejects the request.
+7. Book and any relevant credits are reserved.
+8. Parties arrange shipping or local handover.
+9. Recipient confirms receipt.
+10. Exchange is settled.
+11. Eligible reviews are submitted.
+
+## Essential MVP screens
+
+- Books home.
+- Search.
+- Search filters.
+- Book details.
+- Create listing.
+- Edit listing.
+- My listings.
+- Wishlist.
+- Exchange request.
+- Request status.
+- Handover or delivery details.
+- Receipt confirmation.
+- Credit history.
+- Report or dispute.
+
+## Listing fields
+
+- Title.
+- Author.
+- ISBN where available.
+- Edition.
+- Category.
+- Condition.
+- Description.
+- Photographs.
+- Location.
+- Availability.
+- Credit value or exchange terms.
+
+## Credit-ledger integrity
+
+Implement credits as an auditable accounting mechanism.
+
+- Never trust a client-supplied balance.
+- Record every credit movement.
+- Make settlement atomic.
+- Prevent duplicate settlement.
+- Reserve and release credits through explicit transaction states.
+- Reconcile balances against ledger entries.
+- Require audit records for administrative adjustments.
+- Prevent the same book from being reserved for conflicting exchanges.
+- Define the dispute process.
+
+Keep paid, transferable, or cash-redeemable credits out of the initial MVP until their legal and financial implications have been assessed.
+
+## Monetisation
+
+Evaluate shipping services, premium listings, institutional subscriptions, and transparent service fees.
+
+---
+
+# 14. MODULE SPECIFICATION: EKAM CHARGE
+
+## Purpose
+
+Help EV owners discover and reserve verified, compatible charging opportunities offered by authorised charger owners or operators.
+
+## Main workflow
+
+1. Charger owner registers.
+2. Owner submits charger details.
+3. Verification and safety checks are completed.
+4. Owner sets availability, pricing, and access conditions.
+5. EV owner searches nearby or by destination.
+6. Compatibility and availability are checked.
+7. User chooses a time slot.
+8. Backend atomically reserves the slot.
+9. User receives confirmation and access instructions.
+10. Charging session takes place.
+11. Session and applicable charges are recorded.
+12. User can report a problem or leave an eligible review.
+
+## Essential MVP screens
+
+- Charge home.
+- Charger discovery.
+- Map or list view.
+- Filters.
+- Charger details.
+- Connector compatibility.
+- Availability calendar.
+- Slot selection.
+- Booking summary.
+- Booking confirmation.
+- Access instructions.
+- Booking history.
+- Cancellation.
+- Session record.
+- Report a problem.
+
+## Charger fields
+
+- Owner.
+- Charger make and model.
+- Connector type.
+- Supported vehicles.
+- Charging capacity.
+- Location.
+- Operating hours.
+- Available slots.
+- Price structure.
+- Access instructions.
+- Verification status.
+- Supported integration capabilities.
+
+## Booking safeguards
+
+- Prevent overlapping reservations.
+- Validate availability on the server.
+- Do not trust cached availability.
+- Define booking expiry and cancellation rules.
+- Show pricing before confirmation.
+- Record session status.
+- Provide access-failure and refund procedures.
+- Allow unsafe listings to be suspended.
+
+## Hardware integrations
+
+Do not assume every charger supports remote start, stop, live availability, or energy metering.
+
+Verify each supported hardware model and integration before implementing remote operations.
+
+Initially, allow manually managed availability and session confirmation where legally and operationally appropriate.
+
+---
+
+# 15. MODULE SPECIFICATION: EKAM BUILD
+
+## Purpose
+
+Create a local marketplace for eligible reusable surplus construction and renovation materials.
+
+## Main workflow
+
+1. Seller registers.
+2. Seller creates a material listing.
+3. Seller enters quantity, dimensions, condition, price, photographs, and location.
+4. Backend validates the listing.
+5. Buyers search and filter materials.
+6. Buyer reviews details and requests an inspection or reservation.
+7. Seller accepts or negotiates.
+8. Inventory is reserved.
+9. Parties agree on collection or delivery.
+10. Buyer collects the materials or receives delivery.
+11. Transaction is confirmed or disputed.
+
+## Essential MVP screens
+
+- Build home.
+- Material categories.
+- Search and filters.
+- Material details.
+- Create listing.
+- Edit listing.
+- Seller inventory.
+- Reservation request.
+- Offer or negotiation details.
+- Collection instructions.
+- Transaction status.
+- Seller profile.
+- Report listing.
+- Dispute form.
+
+## Initial categories
+
+Evaluate:
+
+- Reusable timber.
+- Doors and windows.
+- Tiles and flooring.
+- Sanitary fixtures.
+- Eligible metal products.
+- Bricks and pavers.
+- Surplus fittings.
+- Eligible plumbing and electrical components.
+
+Define category-specific requirements and prohibited-material rules.
+
+## Required listing fields
+
+- Material category.
+- Description.
+- Quantity.
+- Measurement unit.
+- Dimensions.
+- Condition.
+- Price.
+- Photographs.
+- Location.
+- Collection requirements.
+- Delivery availability.
+- Seller verification status.
+
+## Business rules
+
+- Prevent overselling reserved inventory.
+- Clearly display quantities and units.
+- Disclose known defects.
+- Avoid unsupported safety or structural claims.
+- Exclude hazardous, contaminated, stolen, or prohibited materials.
+- Identify items that require professional inspection.
+- Define collection, transport, loading, and payment responsibilities.
+- Provide reporting and dispute resolution.
+
+## Monetisation
+
+Evaluate seller subscriptions, qualified leads, featured listings, business procurement tools, and eligible logistics partnerships.
+
+---
+
+# 16. ANDROID ARCHITECTURE
+
+Organise the Android project using clear, maintainable boundaries.
+
+Proposed structure:
+
+- `:app`
+- `:core:common`
+- `:core:designsystem`
+- `:core:network`
+- `:core:database`
+- `:core:auth`
+- `:core:notifications`
+- `:core:location`
+- `:core:analytics`
+- `:core:payments`
+- `:feature:home`
+- `:feature:explore`
+- `:feature:activity`
+- `:feature:profile`
+- `:feature:weddings`
+- `:feature:deals`
+- `:feature:carry`
+- `:feature:books`
+- `:feature:charge`
+- `:feature:build`
+
+This is a starting proposal. Use a simpler structure where it is appropriate for the team and MVP.
+
+## Architecture rules
+
+- Keep presentation, domain, and data responsibilities separate.
+- Keep business rules out of composable UI functions.
+- Use ViewModels for appropriate screen state.
+- Prefer unidirectional data flow.
+- Use repository abstractions where they provide useful boundaries.
+- Use typed models.
+- Centralise networking and error handling.
+- Keep service-specific data access inside the relevant feature or domain.
+- Avoid circular dependencies.
+- Avoid a giant universal ViewModel.
+- Avoid a single global state object containing all application data.
+- Reuse shared components without coupling service-specific business rules.
+
+Every module must be independently testable.
+
+---
+
+# 17. BACKEND ARCHITECTURE
+
+Start with a modular monolith and define clear domain boundaries.
+
+## Shared backend domains
+
+- Identity and authentication.
+- User profiles.
+- Roles and permissions.
+- Verification.
+- Notifications.
+- Media.
+- Search.
+- Location.
+- Reviews.
+- Support.
+- Disputes.
+- Payment orchestration.
+- Audit logging.
+- Administration.
+- Analytics.
+
+## Business domains
+
+- Weddings.
+- Deals.
+- Carry.
+- Books.
+- Charge.
+- Build.
+
+Each domain must own its business rules and lifecycle.
+
+A shared reporting or payment-reference abstraction may connect modules, but do not force all business entities into one universal schema.
+
+## API design
+
+Use versioned APIs such as `/api/v1/`.
+
+Provide:
+
+- Typed request and response models.
+- Input validation.
+- Authentication requirements.
+- Resource ownership checks.
+- Error codes.
+- Pagination.
+- Sorting.
+- Filtering.
+- Rate limiting.
+- Idempotency.
+- Documented state transitions.
+- API documentation through OpenAPI.
+
+Do not allow the Android client to independently authorise a transaction or determine a final payment status.
+
+---
+
+# 18. DATABASE DESIGN
+
+Use PostgreSQL for authoritative transactional records.
+
+## Shared entities
+
+- Users.
+- Profiles.
+- Roles.
+- Permissions.
+- Verification records.
+- Consent records.
+- Notifications.
+- Media metadata.
+- Reviews.
+- Support tickets.
+- Disputes.
+- Payment references.
+- Refund records.
+- Audit events.
+
+## Module entities
+
+Weddings:
+- Weddings.
+- Functions.
+- Households.
+- Guests.
+- Invitations.
+- RSVPs.
+- Reminders.
+
+Deals:
+- Purchase requests.
+- Product categories.
+- Product variants.
+- Demand cohorts.
+- Suppliers.
+- Quotations.
+- Quote line items.
+- Purchase outcomes.
+
+Carry:
+- Product requests.
+- Traveller profiles.
+- Route offers.
+- Matches.
+- Fulfilment orders.
+- Purchase evidence.
+- Delivery milestones.
+
+Books:
+- Book listings.
+- Book metadata.
+- Exchange requests.
+- Reservations.
+- Credit ledger.
+- Handover or delivery records.
+
+Charge:
+- Chargers.
+- Connector specifications.
+- Availability.
+- Bookings.
+- Charging sessions.
+- Session records.
+- Meter readings where supported.
+
+Build:
+- Material categories.
+- Material listings.
+- Inventory.
+- Offers.
+- Reservations.
+- Collection and delivery records.
+
+## Database requirements
+
+- Use primary and foreign keys.
+- Enforce important uniqueness rules.
+- Use database transactions for critical operations.
+- Store money using suitable decimal precision or integer minor units.
+- Store currency explicitly.
+- Use appropriate indexes.
+- Use timestamps consistently.
+- Define retention and deletion policies.
+- Prevent double bookings and overselling.
+- Maintain immutable financial and credit-ledger records.
+- Document database migrations.
+- Test concurrent updates.
+
+Provide an entity-relationship diagram before implementing the full schema.
+
+---
+
+# 19. PAYMENTS AND TRANSACTION SECURITY
+
+Evaluate an appropriate payment gateway for the Indian market after validating the intended business model and provider eligibility.
+
+Do not assume that a gateway automatically supports marketplace payouts, escrow, or split settlements.
+
+## Required safeguards
+
+- Server-generated order references.
+- Server-side payment verification.
+- Authenticated webhook processing.
+- Webhook signature verification.
+- Idempotency.
+- Duplicate-event protection.
+- Payment reconciliation.
+- Refund state management.
+- Audit trails.
+- Clear fee disclosure.
+- Secure handling of payment references.
+- No unnecessary storage of raw payment credentials.
+
+Use explicit states such as:
+
+- Pending.
+- Initiated.
+- Successful.
+- Failed.
+- Refund pending.
+- Partially refunded.
+- Refunded.
+
+Adapt the states to the actual payment provider and business workflow.
+
+For an initial prototype, simulated payments must be clearly labelled as simulations.
+
+For production, use the provider's supported integration and test environment.
+
+Never represent an unverified payment as successful.
+
+---
+
+# 20. SECURITY AND PRIVACY
+
+Implement security throughout the application and backend.
+
+## Required controls
+
+- HTTPS.
+- Secure authentication.
+- Server-side authorisation.
+- Input validation.
+- Rate limiting.
+- Secure secrets management.
+- Restricted administrative permissions.
+- Protected media uploads.
+- Audit logging.
+- Session revocation.
+- Dependency scanning.
+- Sensitive-data redaction.
+- Safe account recovery.
+- Backup and restoration procedures.
+- Error handling without leaking internal details.
+
+## Privacy requirements
+
+- Collect only necessary information.
+- Explain data collection.
+- Obtain applicable consent.
+- Protect personal addresses and location.
+- Protect wedding guest lists.
+- Restrict identity-verification documents.
+- Define retention periods.
+- Provide privacy controls.
+- Support account deletion requests.
+- Limit employee access.
+- Avoid logging passwords, tokens, payment credentials, or identity documents.
+
+Before production, obtain qualified review of the Indian legal requirements applicable to privacy, consumer protection, payments, messaging, delivery, EV charging, and reusable materials.
+
+Do not activate international Carry workflows before the relevant legal and operational reviews are complete.
+
+---
+
+# 21. ADMINISTRATION DASHBOARD
+
+Build a secure web-based administration interface.
+
+The dashboard should use the same backend and permission model as the Android application.
+
+## Shared functions
+
+- User management.
+- Verification review.
+- Listing moderation.
+- Support tickets.
+- Dispute tracking.
+- Payment and refund investigation.
+- Audit logs.
+- Account restrictions.
+- Abuse reports.
+- Notification templates.
+- Operational analytics.
+- Feature flags.
+
+## Module-specific functions
+
+Ekam Weddings:
+- Event access and abuse reports.
+
+Ekam Deals:
+- Supplier verification and quotation review.
+
+Ekam Carry:
+- Product eligibility, delivery disputes, and safety reports.
+
+Ekam Books:
+- Listing moderation and credit reconciliation.
+
+Ekam Charge:
+- Charger verification and booking issues.
+
+Ekam Build:
+- Material listing moderation and prohibited inventory.
+
+Administrative changes affecting money, credits, permissions, or transactions must be authorised and audited.
+
+---
+
+# 22. LOCALISATION AND ACCESSIBILITY
+
+Support:
+
+- English.
+- Hindi.
+- Marathi.
+
+Requirements:
+
+- Use Android resource-based localisation for native interfaces.
+- Avoid hardcoded user-facing strings.
+- Support Devanagari rendering.
+- Format dates and numbers according to locale.
+- Use INR formatting where applicable.
+- Avoid concatenating translated strings incorrectly.
+- Provide readable text sizes.
+- Support screen readers.
+- Maintain sufficient contrast.
+- Provide accessible touch targets.
+- Avoid relying exclusively on colour or icons.
+- Test forms with long translated labels.
+
+Localisation must include relevant error messages, notification templates, onboarding, transaction statuses, and essential policy explanations.
+
+---
+
+# 23. PERFORMANCE AND OFFLINE HANDLING
+
+Optimise for common Android devices and variable Indian mobile networks.
+
+Implement:
+
+- Efficient image loading.
+- Image compression.
+- Pagination.
+- Caching where appropriate.
+- Loading states.
+- Retry handling.
+- Connection-loss handling.
+- Clear stale-data indicators.
+- Local persistence for appropriate data.
+- Safe form resubmission.
+- Duplicate request protection.
+
+Never let offline client data independently authorise:
+
+- Payments.
+- Final bookings.
+- Credit settlements.
+- Inventory reservations.
+- Refunds.
+- Delivery completion.
+
+The server remains authoritative for transactional state.
+
+---
+
+# 24. TESTING REQUIREMENTS
+
+Create a testing strategy before implementation.
+
+## Android tests
+
+- Unit tests.
+- ViewModel tests.
+- Compose UI tests.
+- Navigation tests.
+- Form validation.
+- Authentication.
+- Session expiry.
+- Offline behaviour.
+- Localisation.
+- Accessibility.
+- Supported device configurations.
+
+## Backend tests
+
+- Unit tests.
+- Integration tests.
+- API contract tests.
+- Database constraints.
+- Permission checks.
+- Idempotency.
+- Payment verification.
+- Webhook replay protection.
+- Concurrent reservations.
+- Inventory updates.
+- Credit-ledger integrity.
+- Notification retries.
+- Database migrations.
+
+## Important failure scenarios
+
+Test:
+
+- A user submits the same request twice.
+- Two buyers reserve the same book.
+- Two users attempt to reserve the same charger slot.
+- Two buyers reserve the final available quantity of a material.
+- A payment webhook arrives more than once.
+- A payment succeeds but the client loses its connection.
+- A notification provider is unavailable.
+- A reservation expires during payment.
+- A user attempts to access another user's private record.
+- An administrator attempts an unauthorised financial adjustment.
+
+Do not mark a feature complete until its acceptance criteria and relevant failure scenarios pass.
+
+---
+
+# 25. INFRASTRUCTURE AND DEPLOYMENT
+
+Create separate environments for:
+
+- Development.
+- Testing.
+- Staging.
+- Production.
+
+Implement a suitable CI/CD pipeline.
+
+The pipeline should support:
+
+- Automated builds.
+- Automated tests.
+- Dependency scanning.
+- Database migration checks.
+- Versioned releases.
+- Controlled deployment.
+- Secure release signing.
+- Rollback or forward-fix procedures.
+
+Set up:
+
+- Application crash reporting.
+- Backend error monitoring.
+- Centralised logs.
+- API performance monitoring.
+- Database monitoring.
+- Background-job monitoring.
+- Payment reconciliation alerts.
+- Automated backups.
+- Periodic restore tests.
+- Incident response documentation.
+
+Define appropriate recovery objectives based on the MVP's risk and budget.
+
+Do not assume that a successful deployment automatically means the system is production-ready.
+
+---
+
+# 26. EXTERNAL INTEGRATIONS
+
+Identify and evaluate integrations before implementing them.
+
+Potential integrations include:
+
+- Authentication provider.
+- Firebase Cloud Messaging.
+- Payment gateway.
+- Maps and geocoding.
+- SMS.
+- WhatsApp Business messaging.
+- Email.
+- Identity verification.
+- Object storage.
+- Analytics.
+- Crash reporting.
+- Search.
+- EV charger hardware APIs.
+- Delivery partners.
+- ISBN or book metadata providers.
+
+For every integration, document:
+
+1. Why it is needed.
+2. Whether it is essential for the MVP.
+3. Whether it requires a paid account.
+4. Whether it has free usage limits.
+5. Whether it requires approval or business verification.
+6. Whether it has regional restrictions.
+7. Whether it processes personal data.
+8. Whether a sandbox or test environment exists.
+9. What happens if the service becomes unavailable.
+10. What fallback is available.
+
+Do not invent API keys, credentials, endpoints, or provider capabilities.
+
+If credentials are unavailable, implement a clear interface and a development-only mock adapter, then document the steps required for the real integration.
+
+Never mix mock responses with production data without an explicit environment boundary.
+
+---
+
+# 27. COMMERCIAL FEASIBILITY
+
+Evaluate the commercial viability of all six services.
+
+Compare them using:
+
+- Severity of the customer problem.
+- Frequency of use.
+- Willingness to pay.
+- User acquisition difficulty.
+- Supply acquisition difficulty.
+- Marketplace liquidity.
+- Technical complexity.
+- Operational burden.
+- Trust and safety exposure.
+- Regulatory complexity.
+- Third-party dependencies.
+- Revenue potential.
+- Cost per transaction.
+- Time to first real transaction.
+
+Recommend exactly one initial module.
+
+Do not choose based only on which module is easiest to code.
+
+Explain the trade-offs and the assumptions behind the recommendation.
+
+For the selected module, identify:
+
+- Initial customer segment.
+- Geographic pilot area.
+- First 50–100 target users or participating businesses.
+- Essential MVP features.
+- Features to defer.
+- First real transaction workflow.
+- Pricing hypothesis.
+- Success metrics.
+- Reasons the business might fail.
+- Conditions for continuing, changing direction, or stopping.
+
+Provide estimates as assumptions rather than guarantees.
+
+---
+
+# 28. DEVELOPMENT PRIORITIES
+
+Classify features as:
+
+**P0 — Essential for MVP**
+
+Necessary to deliver the core workflow safely and reliably.
+
+**P1 — Post-validation improvements**
+
+Useful after the initial workflow has been validated.
+
+**P2 — Expansion features**
+
+Advanced integrations, automation, analytics, and additional capabilities.
+
+Do not classify every proposed feature as P0.
+
+For the initial MVP, prioritise:
+
+- One core customer problem.
+- One clearly defined user journey.
+- Minimal required shared infrastructure.
+- Secure data handling.
+- Reliable persistence.
+- Basic administration.
+- Essential operational monitoring.
+- Automated tests for important business rules.
+
+Defer unrelated enhancements.
+
+---
+
+# 29. REQUIRED OUTPUTS BEFORE CODING
+
+Before generating the main implementation, provide:
+
+1. Executive summary.
+2. Feasibility assessment of all six Ekam services.
+3. Comparison of the six modules.
+4. Recommendation for one initial MVP.
+5. MVP user personas and user journeys.
+6. Screen inventory and navigation flow.
+7. System architecture diagram.
+8. Android project structure.
+9. Backend domain structure.
+10. Database entity-relationship diagram.
+11. API endpoint specification.
+12. Transaction state machines.
+13. Security and privacy assessment.
+14. External integration register.
+15. Compliance questions requiring professional review.
+16. Initial team and delivery estimates.
+17. Infrastructure cost assumptions in INR.
+18. Prioritised implementation backlog.
+19. Test strategy.
+20. Definition of done.
+
+Keep the output specific to Ekam rather than giving generic software-development advice.
+
+---
+
+# 30. IMPLEMENTATION RULES
+
+When implementation begins:
+
+- Generate complete, coherent files rather than isolated fragments when the environment supports full-file editing.
+- Preserve existing project structure where applicable.
+- Do not overwrite working files unnecessarily.
+- Explain significant architectural choices.
+- Keep source code readable and maintainable.
+- Use appropriate naming conventions.
+- Validate user inputs.
+- Implement actual navigation between implemented screens.
+- Connect forms to the intended state and persistence layer.
+- Implement real backend operations when backend infrastructure is available.
+- Clearly label unimplemented integrations.
+- Provide environment setup instructions.
+- Provide build and test commands.
+- Report test results accurately.
+- Document known limitations.
+- Never claim that code has been executed or tested when it has not.
+- Do not place production secrets in source code.
+- Do not expose personal information in sample logs.
+- Avoid unnecessary dependencies.
+- Avoid large, unreviewable code dumps.
+- Complete one coherent milestone before starting the next.
+
+Use a development checklist and keep it updated after each milestone.
+
+---
+
+# 31. DEFINITION OF DONE
+
+A feature is complete only when:
+
+1. The relevant UI is implemented.
+2. The user journey is navigable.
+3. Input validation works.
+4. Business rules are enforced on the server.
+5. Data persists correctly.
+6. Permissions are verified.
+7. Loading and error states are implemented.
+8. Retry behaviour is safe.
+9. Relevant automated tests pass.
+10. Important failure scenarios are covered.
+11. Accessibility and localisation are considered.
+12. Required administrative operations are available.
+13. Documentation is updated.
+14. External dependencies are identified.
+15. Production limitations are explicitly documented.
+
+A visually polished screen without working business logic is not a completed feature.
+
+---
+
+# 32. FINAL INSTRUCTIONS TO GOOGLE AI STUDIO
+
+Start by analysing the complete Ekam specification.
+
+Do not immediately attempt to generate all six complete services.
+
+First, return the executive assessment and proposed architecture.
+
+Then:
+
+1. Compare the six modules.
+2. Recommend one initial MVP.
+3. Explain the recommendation.
+4. Define the end-to-end user journey.
+5. Propose the system architecture.
+6. Define the database and API contracts.
+7. Identify essential integrations and legal reviews.
+8. Establish a realistic implementation roadmap.
+9. Present the initial backlog.
+10. Ask only the essential questions that genuinely affect architectural or business decisions.
+
+After the planning stage, implement the first MVP in small, verifiable increments.
+
+If Google AI Studio cannot directly build, run, or package the requested native Android application, explain that limitation and provide the appropriate project artefacts for a native Android development environment. Do not silently substitute a web application for the requested native Android product.
+
+Keep the codebase modular, the UI consistent, the backend authoritative, and the business rules explicit.
+
+Do not implement simulated production payments, fake verification, fabricated marketplace activity, or unconfigured external integrations as if they were real.
+
+**The ultimate objective is to build Ekam into a trustworthy, extensible, commercially viable multi-service platform by validating one complete business workflow first and expanding through evidence-based decisions.**

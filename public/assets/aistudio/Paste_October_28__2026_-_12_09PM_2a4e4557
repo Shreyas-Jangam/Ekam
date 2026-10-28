@@ -1,0 +1,613 @@
+# MASTER PRODUCT DEVELOPMENT PROMPT: EKAM WEDDINGS
+
+## 1. ROLE AND OBJECTIVE
+
+Act as a principal product architect, enterprise SaaS engineer, UX/UI designer, data engineer, security architect, AI engineer and wedding-industry operations specialist.
+
+Your task is to transform **Ekam Weddings**, an existing module within the Ekam multi-service platform, into a production-oriented, enterprise-grade Wedding Guest Intelligence and Management Service designed specifically for Indian weddings.
+
+The core business problem is that Indian families and wedding planners spend substantial amounts on catering, venues and hospitality but often lack reliable information about actual guest attendance. RSVP responses are scattered across WhatsApp conversations, phone calls, spreadsheets and family groups. This creates uncertainty, unnecessary costs, food waste, shortages and operational confusion.
+
+Ekam Weddings must centralize invitations, household guest management, RSVPs, attendance forecasting, catering coordination, check-in and vendor collaboration.
+
+**Primary product promise:** Help wedding organizers understand who is coming, how many people are coming, what they need, when they expect to arrive and how changes affect the wedding budget.
+
+## 2. NON-NEGOTIABLE EXISTING-PROJECT CONSTRAINTS
+
+The Ekam website and application already exist.
+
+Do not rebuild the entire website from scratch. Do not replace the existing project with an unrelated template.
+
+First inspect the existing source code, framework, routing, component library, authentication, backend, database, design tokens, integrations and current Ekam Weddings implementation.
+
+Preserve:
+- The existing Ekam brand identity and six-module marketplace structure.
+- The current application architecture wherever it is suitable.
+- Existing routing, shared navigation, authentication, profile management and account settings.
+- Existing reusable components, dependencies and working integrations.
+- Existing features in Ekam Weddings and other Ekam modules.
+- Existing mobile and desktop responsive behavior.
+
+The existing design system uses Midnight Indigo (#1A237E), Soft Teal (#00897B), Warm Off-White (#F8F9FA) and Material 3-inspired design conventions. Reuse these tokens consistently unless the existing implementation has already evolved.
+
+Make changes incrementally. Avoid unnecessary dependency replacements, architectural rewrites and duplicated components.
+
+Before coding, produce a concise audit of the current project, identify reusable infrastructure and document the proposed implementation plan. Then implement the improvements directly in the existing codebase.
+
+Do not stop after producing a plan, wireframe or list of recommendations.
+
+## 3. TARGET USERS AND ORGANIZATION MODEL
+
+Support the following user types:
+
+1. Wedding host or family administrator.
+2. Wedding planner or event management agency.
+3. Guest list manager or family coordinator.
+4. Catering manager.
+5. Venue manager.
+6. Hospitality, transport and check-in staff.
+7. Read-only client or vendor collaborator.
+8. Ekam platform administrator.
+
+Use an organization-based, multi-tenant architecture. An individual family may manage a private wedding workspace, while a professional planner may manage multiple client organizations or weddings under authorized arrangements.
+
+Each wedding must support multiple functions, venues, guest groups, vendors, budgets and staff members.
+
+Implement granular, server-enforced role-based permissions. A vendor must only see the weddings, functions and information explicitly shared with them. Family members must not automatically gain access to other families' weddings. Platform administrators must have audited, appropriately restricted access.
+
+## 4. WEDDING WORKSPACE AND ONBOARDING
+
+Create a guided onboarding workflow.
+
+Collect:
+- Wedding or event name.
+- Host names and contact details.
+- Wedding dates and timezone.
+- Primary language and preferred communication language.
+- Event locations and venue details.
+- Approximate invitation count.
+- Estimated catering budget.
+- Currency, defaulting to INR.
+- Guest response deadline.
+- Catering finalization deadline.
+- Preferred communication channels.
+- Wedding planner and vendor contacts, if applicable.
+
+Allow users to create, edit, duplicate and archive weddings according to permissions.
+
+Provide a wedding setup checklist that identifies incomplete configuration, missing guest data, unconfigured messaging and outstanding vendor approvals.
+
+Support draft, active, completed and archived wedding states.
+
+## 5. GUEST DATABASE AND HOUSEHOLD MANAGEMENT
+
+Build a comprehensive guest CRM.
+
+Each guest record may contain:
+- Unique internal guest ID.
+- Name and preferred display name.
+- Phone number with country code.
+- Email address, where provided.
+- Household or family group.
+- Invitation category.
+- Relationship or group label.
+- Language preference.
+- Invitation delivery status.
+- Function-specific RSVP status.
+- Number of confirmed attendees.
+- Dietary preferences.
+- Accessibility or hospitality requirements, where voluntarily provided.
+- Expected arrival window.
+- Assigned seating or table, if configured.
+- Check-in status and timestamp.
+- Authorized notes.
+- Consent and communication preferences.
+- Creation, update and activity timestamps.
+
+Support households with multiple attendees, children, elders and permitted plus-ones. Each person must have a distinguishable attendee record when individual-level tracking is required.
+
+Allow CSV/XLSX import when supported by the existing stack, column mapping, data validation, duplicate detection, import previews, error reports, bulk edits, filters, sorting, search, pagination and CSV export.
+
+Never merge contacts automatically when identity is uncertain. Provide a review and confirmation workflow.
+
+Use normalized phone numbers, stable identifiers and idempotent operations to reduce duplicate records.
+
+## 6. DIGITAL INVITATIONS AND GUEST RSVP EXPERIENCE
+
+Build elegant, personalized, mobile-first invitation pages that open directly in a browser without requiring a guest to install an application.
+
+Invitation pages should support:
+- Host names and optional photographs.
+- Wedding branding, colors and invitation artwork.
+- Function-specific dates, schedules and venue information.
+- Venue directions through an appropriate maps link.
+- Personalized guest or household greeting.
+- RSVP actions: Accept, Decline, Maybe or Request Assistance.
+- Attendee selection for each function.
+- Dietary preference collection.
+- Arrival estimates.
+- Optional accommodation, transport and accessibility requests.
+- Calendar links and event updates.
+- Configurable response deadlines.
+- A confirmation screen and authorized response-editing link.
+
+Allow invitation creators to configure which questions appear for each event.
+
+Guests must be able to accept the wedding ceremony and decline the reception, or make different choices for other functions.
+
+Validate guest limits, permitted plus-ones, mandatory fields and deadline rules on the server.
+
+Support accessible typography, keyboard navigation, screen readers, clear validation and low-bandwidth mobile usage.
+
+Use secure, revocable invitation tokens with appropriate expiration, rate limits and access controls. Avoid exposing sequential guest IDs or sensitive personal information in URLs.
+
+Provide optional branded invitation templates, including traditional Indian, contemporary minimalist, luxury, regional and culturally adaptable designs.
+
+## 7. WHATSAPP AND COMMUNICATION AUTOMATION
+
+Implement a provider abstraction for official WhatsApp Business Platform integrations, with optional SMS and email providers.
+
+The communication service should support:
+- Personalized invitation messages.
+- Approved invitation templates.
+- Secure RSVP links.
+- Initial invitations and scheduled reminders.
+- Response confirmations.
+- Event schedule changes.
+- Deadline reminders.
+- Guest cancellation notifications.
+- Arrival and venue updates.
+- Authorized internal alerts.
+- Message delivery and failure reporting.
+- Retry handling with backoff.
+- Rate limiting and duplicate-send prevention.
+- Message history and communication preferences.
+
+Create configurable reminder schedules, for example 14 days, 7 days, 3 days and 24 hours before a function. Make all intervals adjustable and avoid sending irrelevant reminders to guests who have already responded.
+
+Use approved message templates when required. Respect applicable WhatsApp opt-in, template, messaging-window and platform requirements. Support opt-out and communication suppression.
+
+Handle provider webhooks securely. Verify signatures where supported, process events idempotently and reconcile delivery states without assuming that a sent message has been delivered or read.
+
+If WhatsApp credentials are not configured, implement a clearly labelled sandbox or manual-share mode. Allow users to copy invitation links and messages or open an authorized share workflow. Never simulate a successful external message delivery.
+
+## 8. MULTI-FUNCTION EVENT MANAGEMENT
+
+Create an event management system supporting:
+- Engagement.
+- Haldi.
+- Mehendi.
+- Sangeet.
+- Wedding ceremony.
+- Reception.
+- Pre-wedding dinners.
+- Family gatherings.
+- Custom functions.
+
+Each function must have its own:
+- Event date, start and end time.
+- Venue and capacity.
+- Invitation groups.
+- RSVP deadline.
+- Attendee list.
+- Confirmed and estimated attendance.
+- Meal periods and dietary counts.
+- Communication schedule.
+- Seating configuration, where required.
+- Catering budget and vendor.
+- Arrival windows.
+- Check-in operations.
+- Operational tasks.
+- Change history.
+
+Build an event timeline and consolidated wedding overview. Changing one function must not accidentally modify another function's RSVP records.
+
+Support event duplication with explicit confirmation of which configuration and guest selections will be copied.
+
+## 9. ATTENDANCE INTELLIGENCE ENGINE
+
+Build a transparent attendance analytics service.
+
+Display the following separately:
+- Total invited attendees.
+- Invitation delivery status, when available.
+- Total confirmed attendees.
+- Declined attendees.
+- Maybe responses.
+- Awaiting responses.
+- Expected attendance estimate.
+- Conservative and high-attendance scenarios.
+- Actual checked-in attendees.
+- Outstanding discrepancies.
+
+Do not confuse invited people, responding households and confirmed individual attendees.
+
+Provide function-level and meal-period-level forecasts.
+
+Initially implement a reliable rules-based forecast. It may use confirmed individual RSVPs, pending responses, historical attendance patterns when sufficient comparable data exists, recent cancellations and time remaining before the function.
+
+Show the assumptions behind every estimate. If historical data is insufficient, use clearly labelled scenarios rather than pretending to have a trained predictive model.
+
+Keep confirmed attendance separate from forecast attendance. Do not silently convert an unconfirmed guest into a confirmed attendee.
+
+Where statistically justified, expose prediction intervals, calibration metrics and sample sizes. Evaluate forecasting quality against actual attendance after completed events.
+
+Avoid training across customer organizations without explicit, appropriate authorization and privacy safeguards.
+
+## 10. CATERING COST AND FOOD PLANNING
+
+Create a dedicated catering intelligence workspace.
+
+Support:
+- Configurable meal periods.
+- Vegetarian and non-vegetarian counts.
+- Vegan, Jain and other configurable dietary categories.
+- Allergies and special meal requirements.
+- Adult and child meal categories.
+- Different per-plate prices.
+- Vendor minimum guarantees.
+- Minimum billable quantities.
+- Price tiers and optional service charges.
+- Taxes and discounts where applicable.
+- Final headcount deadlines.
+- Authorized headcount revisions.
+- Catering quotes and approved budgets.
+- Planned quantities versus actual consumption.
+
+Implement a transparent cost calculator.
+
+For example:
+
+Estimated catering cost = sum of applicable meal quantities multiplied by their configured rates, adjusted for contractual minimums, applicable charges and discounts.
+
+Do not assume every attendee consumes one identical plate. Support event-specific meal eligibility, meal periods and vendor-defined billing rules.
+
+Display:
+- Cost at the invited headcount.
+- Cost at confirmed attendance.
+- Cost under conservative, expected and high-attendance scenarios.
+- Potential cost exposure from uncertain attendance.
+- Contractual minimum cost.
+- Approved final catering commitment.
+- Actual final invoice and reconciliation, when available.
+
+Clearly distinguish a theoretical difference in food cost from genuine cash savings. Savings are realized only when the contractual arrangement and operational decisions allow a lower cost.
+
+Allow authorized caterers to acknowledge a headcount and its applicable deadline. Maintain an audit trail for changes after approval.
+
+Generate printable kitchen preparation sheets and downloadable PDF/CSV/XLSX reports as supported by the existing stack.
+
+## 11. ARRIVAL, CHECK-IN AND VENUE OPERATIONS
+
+Build an optional QR-based guest check-in module.
+
+Provide:
+- Unique invitation QR codes.
+- Mobile-friendly scanning.
+- Search-based manual check-in.
+- Individual attendee check-in.
+- Household overview.
+- Duplicate scan warnings.
+- Authorized walk-in registration.
+- Arrival timestamps.
+- Function-specific attendance.
+- Multi-entrance operations.
+- Live check-in counts.
+- Offline-capable operation if the existing architecture can safely support it.
+
+If offline operation is implemented, define synchronization rules, conflict handling, duplicate prevention and the limitations of stale data. Do not claim globally real-time attendance while devices are offline.
+
+Provide seating assignment, table allocation, venue capacity alerts and guest arrival lists as optional capabilities.
+
+Support authorized transport manifests, hotel rooming lists and special assistance workflows without requiring these features for basic RSVP operation.
+
+## 12. VENDOR COLLABORATION AND TASK MANAGEMENT
+
+Create a vendor workspace with configurable access for:
+- Caterers.
+- Venues.
+- Decorators.
+- Photographers.
+- Transportation providers.
+- Hospitality teams.
+- Event production teams.
+
+Support:
+- Vendor profiles and contacts.
+- Function-specific assignments.
+- Task owners and deadlines.
+- Event schedules.
+- Document and quote attachments.
+- Headcount requests and approvals.
+- Operational change notifications.
+- Vendor acknowledgment.
+- Completion status.
+- Activity history.
+
+Restrict every report and attachment by organization, wedding, function and role.
+
+Never expose the full guest database to vendors when an aggregated report or limited contact list is sufficient.
+
+## 13. ENTERPRISE DASHBOARD AND REPORTING
+
+Create a professional wedding operations dashboard.
+
+The main dashboard should display:
+- Active weddings.
+- Upcoming functions.
+- Invitations sent.
+- RSVP completion rate.
+- Confirmed individual attendees.
+- Pending responses.
+- Current attendance forecast.
+- Catering budget and forecast cost.
+- Unresolved operational alerts.
+- Final headcount deadlines.
+- Vendor approval status.
+
+Include:
+- Searchable guest table.
+- Event-wise attendance analytics.
+- Response trends over time.
+- Meal preference distribution.
+- Household response summaries.
+- Catering cost comparisons.
+- Check-in reconciliation.
+- Exportable reports.
+- Printable summaries.
+- Date-range and event filters.
+- Scheduled report delivery where configured.
+
+Make charts accessible, clearly labelled and based on real application data.
+
+Every financial or attendance metric must have a clear definition and calculation.
+
+## 14. AI ASSISTANT AND AUTOMATED INSIGHTS
+
+Add an optional AI-powered wedding operations assistant.
+
+Potential capabilities:
+- Summarize pending RSVPs.
+- Identify functions with low response rates.
+- Suggest which authorized guest groups need follow-up.
+- Explain why attendance forecasts changed.
+- Identify conflicting guest or meal records.
+- Draft personalized invitation and reminder messages.
+- Summarize catering and vendor updates.
+- Highlight upcoming operational deadlines.
+- Compare forecast and actual attendance.
+- Generate post-event reports.
+
+Example query: "How many vegetarian meals should we plan for the reception, and which assumptions affect the estimate?"
+
+The assistant must retrieve authorized, current data and explain its calculations. It must not fabricate RSVP responses, delivery confirmations, savings, guest identities or vendor approvals.
+
+Use deterministic business logic for financial calculations, permissions and headcounts. Use AI for language, summaries and supported analytical assistance rather than as the authoritative database.
+
+Require human approval before sending bulk communications, changing approved catering quantities, making financial commitments or performing consequential actions.
+
+Do not send unnecessary personally identifiable guest data to external AI services.
+
+## 15. ENTERPRISE SAAS CAPABILITIES
+
+Design the product for future commercial use by professional planners and event agencies.
+
+Include:
+- Organization workspaces.
+- Multi-tenant data isolation.
+- User invitations and team management.
+- Role-based permissions.
+- Plan entitlements and usage limits.
+- Subscription and billing integration through supported providers.
+- Invoice and payment status management.
+- Configurable notification quotas.
+- Audit logs.
+- Organization-level settings.
+- Data export and account deletion workflows.
+- Optional white-label invitations.
+- Branded agency workspaces.
+- Feature flags.
+- Support and troubleshooting tools.
+- Tenant-level analytics.
+- Operational monitoring.
+
+Possible commercial packages:
+1. Family: one wedding, core invitations and RSVP tracking.
+2. Planner: multiple weddings, teams, vendor collaboration and advanced reporting.
+3. Agency: higher usage limits, white-label options and multi-client management.
+4. Enterprise: negotiated limits, advanced administration, contractual support and integration options.
+
+Treat these as product concepts, not active purchasable plans until pricing, billing and entitlements have been implemented.
+
+## 16. SECURITY, PRIVACY AND COMPLIANCE
+
+Implement security appropriate for a service holding guest contact details, family relationships, event schedules and hospitality information.
+
+Requirements:
+- Server-side authorization for every protected operation.
+- Strict tenant isolation.
+- Secure authentication and session management.
+- Encryption in transit and appropriate encryption at rest.
+- Secret management through environment configuration or a suitable secret manager.
+- Secure invitation tokens.
+- Rate limiting and abuse protection.
+- Input validation and output encoding.
+- Protection against injection, cross-site scripting, cross-site request forgery where applicable, and insecure direct object references.
+- Safe file upload and download controls.
+- Signed webhook verification where supported.
+- Audit trails for sensitive operations.
+- Data minimization and configurable retention.
+- Guest consent and communication preference management.
+- Secure export, correction and deletion workflows.
+- Backup and tested recovery procedures.
+- Privacy notices and appropriate consent flows.
+- Applicable Indian data protection and consumer requirements, including the Digital Personal Data Protection framework and rules in force at deployment.
+
+Do not claim regulatory compliance without a documented assessment.
+
+Do not expose phone numbers, guest lists, private invitation tokens or hospitality requirements through public APIs, client-side logs, analytics events or unsecured exports.
+
+## 17. TECHNICAL ARCHITECTURE
+
+Inspect the existing architecture before selecting implementation details.
+
+Prefer extending the existing stack and using established shared Ekam services.
+
+If a backend is missing or inadequate, design a maintainable modular backend with clear domain boundaries for:
+- Identity and organizations.
+- Weddings and functions.
+- Guests and households.
+- Invitations and RSVPs.
+- Communications.
+- Attendance forecasting.
+- Catering and budgets.
+- Check-in.
+- Vendors and tasks.
+- Reporting.
+- Billing and entitlements.
+- Audit and administration.
+
+Use a relational database with appropriate foreign keys, indexes, unique constraints and transactions. PostgreSQL is a suitable option if consistent with the current stack.
+
+Implement:
+- Versioned APIs.
+- Schema migrations.
+- Typed validation.
+- Background job processing for scheduled reminders and exports.
+- Reliable retry policies.
+- Idempotency for important operations.
+- Structured application logs.
+- Error monitoring.
+- Health checks.
+- API documentation.
+- Automated tests.
+- Environment-specific configuration.
+
+Keep integrations replaceable. Do not hard-code a single messaging, payment, email or AI provider into business logic.
+
+Use transactions for important RSVP, approval and billing changes. Use an outbox or equivalent reliable delivery pattern where necessary to prevent database changes and external notifications from becoming inconsistent.
+
+Do not introduce microservices, Redis, message brokers or additional infrastructure merely for appearance. Add them only when justified by the existing workload and deployment architecture.
+
+## 18. UI/UX AND VISUAL QUALITY
+
+Deliver a premium, trustworthy enterprise experience while keeping the guest experience simple and welcoming.
+
+Follow the existing Ekam visual language:
+- Midnight Indigo #1A237E.
+- Soft Teal #00897B.
+- Warm Off-White #F8F9FA.
+- Consistent typography, spacing, elevation and component states.
+
+Create distinct experiences for:
+1. Wedding host.
+2. Planner.
+3. Vendor.
+4. Guest.
+5. Ekam administrator.
+
+Use responsive layouts, clean data tables, concise dashboards, clear empty states, contextual help, loading skeletons, actionable errors, success feedback and confirmation dialogs for destructive actions.
+
+Provide desktop and mobile layouts. Make the guest RSVP flow exceptionally simple: open link, review invitation, choose functions, confirm attendees, provide requested preferences and submit.
+
+Avoid excessive gradients, decorative animations, crowded cards and meaningless metrics. Prioritize readability, accessibility, speed and operational clarity.
+
+## 19. DATA INTEGRITY AND BUSINESS RULES
+
+Establish explicit rules:
+- Each guest has a stable internal identifier.
+- Each guest may have separate responses for each function.
+- Household size is not automatically equivalent to confirmed attendance.
+- Duplicate submissions must not inflate attendance counts.
+- RSVP edits must update all relevant authorized reports.
+- Forecasts must never overwrite actual confirmed responses.
+- Check-in counts must be based on individual attendance records.
+- Catering commitments must be distinct from forecast estimates.
+- Finalized headcounts require explicit authorization for changes.
+- Every important change must have an attributable activity record.
+- All date calculations must respect the event's timezone.
+- Deleted, archived or revoked invitation records must not remain accessible through old public links.
+- Financial calculations must use validated numeric inputs and documented rounding rules.
+
+Provide reconciliation tools for imported guests, RSVP counts, check-in counts and catering invoices.
+
+## 20. TESTING AND ACCEPTANCE CRITERIA
+
+Implement automated unit, integration and end-to-end tests where supported.
+
+Test:
+- Guest import and duplicate detection.
+- Household and plus-one limits.
+- RSVP creation, revision and decline.
+- Multi-function RSVP independence.
+- Dietary counts and cost calculations.
+- Attendance forecast assumptions.
+- Reminder scheduling and duplicate-send prevention.
+- Provider failures and webhook retries.
+- Invitation token expiration and revocation.
+- Cross-tenant authorization attacks.
+- Vendor permission restrictions.
+- QR check-in and duplicate scans.
+- Concurrent RSVP changes.
+- Deadline handling and timezone boundaries.
+- Export permissions.
+- Mobile usability and accessibility.
+- Subscription entitlements, if implemented.
+
+Use a test wedding with 400 invited attendees as the demonstration scenario. Seed realistic, clearly identified sample data and provide a deterministic way to reproduce expected totals.
+
+Demonstrate that changing a guest from attending to declining updates the relevant RSVP counts, forecasts and catering scenarios without incorrectly changing unrelated functions.
+
+Demonstrate that a caterer can view authorized catering totals but cannot access restricted guest details or another organization's wedding.
+
+Demonstrate that a failed WhatsApp integration is reported accurately and does not falsely mark invitations as delivered.
+
+## 21. IMPLEMENTATION PHASES
+
+Implement in this order:
+
+Phase 1: Audit existing project, preserve architecture and define the domain model.
+
+Phase 2: Build wedding setup, guest CRM, households, multi-function events and RSVP workflows.
+
+Phase 3: Build invitation pages, WhatsApp provider integration, communication preferences and scheduled reminders.
+
+Phase 4: Build attendance forecasting, catering calculations, budgets and vendor approvals.
+
+Phase 5: Build check-in, QR scanning, seating and operational reporting.
+
+Phase 6: Add enterprise organizations, advanced permissions, subscription entitlements and administrative tools.
+
+Phase 7: Add optional AI assistance, advanced analytics and post-event reconciliation.
+
+Phase 8: Complete security review, automated testing, performance testing, accessibility checks and deployment documentation.
+
+Prioritize a complete, working core workflow before introducing advanced AI or secondary integrations.
+
+## 22. REQUIRED DELIVERABLES
+
+Deliver the actual enhanced application, not just a specification.
+
+Provide:
+1. An audit of the existing project.
+2. An implementation plan and identified risks.
+3. The completed Ekam Weddings user interface.
+4. Functional guest, household, event and RSVP workflows.
+5. Backend and database changes where required.
+6. Messaging integration or a clearly labelled sandbox/manual-share implementation.
+7. Attendance and catering calculations with documented assumptions.
+8. Role-based vendor and planner workflows.
+9. Appropriate tests and test data.
+10. Environment variable documentation.
+11. Database migration and setup instructions.
+12. Deployment instructions.
+13. Security and privacy notes.
+14. A list of completed features, incomplete features and external credentials still required.
+
+Do not use fake success messages, nonfunctional buttons, invented analytics or static data disguised as live production data.
+
+If a feature depends on external credentials, an unavailable provider or an infrastructure capability that is not configured, implement the appropriate integration boundary, explain the requirement and provide a testable fallback.
+
+At the end, summarize the files changed, tests executed, known limitations and the next highest-priority tasks.
+
+**FINAL STANDARD:** Ekam Weddings should feel like a professional event operations platform backed by reliable data, not merely a digital invitation page. Every feature must solve a real problem, respect guest privacy, reduce operational uncertainty and provide measurable value to families, wedding planners and catering partners.
