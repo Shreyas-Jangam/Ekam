@@ -7,10 +7,9 @@ import { AuthModal } from './AuthModal';
 export const Navbar: React.FC = () => {
   const { state, activeModule, setActiveModule, language, setLanguage, translate, setAiChatOpen } = useApp();
   const [showNotifications, setShowNotifications] = useState(false);
-  const [authModalOpen, setAuthModalOpen] = useState(!Boolean(localStorage.getItem('ekam_token')));
+  const [authModalOpen, setAuthModalOpen] = useState(false);
 
   const unreadCount = state?.notifications.filter(n => !n.read).length || 0;
-  const isLoggedIn = Boolean(localStorage.getItem('ekam_token'));
 
   return (
     <>
@@ -112,25 +111,15 @@ export const Navbar: React.FC = () => {
               )}
             </div>
 
-            {/* Profile Button / Sign In */}
-            {isLoggedIn ? (
-              <button
-                onClick={() => setActiveModule('profile')}
-                className={`p-2.5 rounded-xl flex items-center space-x-2 border transition-all ${activeModule === 'profile' ? 'bg-orange-600 border-orange-500 text-white shadow-lg shadow-orange-600/30' : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:bg-slate-800'}`}
-                title="User Profile"
-              >
-                <User className="w-4 h-4" />
-                <span className="text-xs font-bold hidden lg:inline">{state?.currentUser.name.split(' ')[0]}</span>
-              </button>
-            ) : (
-              <button
-                onClick={() => setAuthModalOpen(true)}
-                className="bg-orange-600 hover:bg-orange-500 text-white px-4 py-2 rounded-xl text-xs font-bold flex items-center space-x-1.5 shadow-md shadow-orange-600/20"
-              >
-                <LogIn className="w-3.5 h-3.5" />
-                <span>Sign In</span>
-              </button>
-            )}
+            {/* Profile Button */}
+            <button
+              onClick={() => setActiveModule('profile')}
+              className={`p-2.5 rounded-xl flex items-center space-x-2 border transition-all ${activeModule === 'profile' ? 'bg-orange-600 border-orange-500 text-white shadow-lg shadow-orange-600/30' : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:bg-slate-800'}`}
+              title="User Profile"
+            >
+              <User className="w-4 h-4" />
+              <span className="text-xs font-bold hidden lg:inline">{state?.currentUser.name.split(' ')[0]}</span>
+            </button>
 
             {/* Admin Dashboard Button */}
             <button
